@@ -1,0 +1,47 @@
+$main-color: rgb(229, 9, 20);
+$secondary-color: rgb(245, 245, 241);
+
+$bg-color: rgb(20 20 20);
+$gray-color: rgb(34 31 31);
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
+
+$font-family: 'Roboto', sans-serif;
+
+@mixin font($size: 16px, $weight: 400, $height: 1.5, $color: $secondary-color) {
+    font-family: $font-family;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: 1.5;
+    color: $secondary-color;
+}
+
+
+@mixin flex($align: center, $justify: center, $direction: row, $gap: 0, $wrap: nowrap) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    gap: $gap;
+}
+
+
+@mixin button($bg-color: $main-color, $text-color: $secondary-color, $border: none) {
+    background-color: $bg-color;
+    color: $text-color;
+    border: $border;
+    padding: 8px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    @include font(18px, 500);
+    @include flex(center, center, row, 8px, nowrap);
+    transition: transform 0.1s linear;
+
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
+

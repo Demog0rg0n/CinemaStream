@@ -1,0 +1,36 @@
+@use 'mixins' as *;
+@use 'reset';
+
+body {
+    @include font(16px, 400, 1.5, $secondary-color);
+    background-color: $bg-color;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* Added for better compatibility */
+    border: 0;
+}
+
+.fill-button {
+    @include button($main-color, $secondary-color, none);
+}
+.fill-button_gray {
+    background-color: rgb(34 31 31);
+}
+.transp-button {
+    @include button(none, rgb(75, 85, 99), 1px solid rgb(75, 85, 99));
+}

@@ -1,0 +1,158 @@
+@use '../../styles/mixins.scss' as *;
+
+.new {
+
+    &__slide {
+        width: 100%;
+        position: relative;
+
+        &__container {
+            min-height: 850px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+        }
+
+        &__bg-image {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(60%)
+        }
+
+        p {
+            @include font(1.25rem, 400, 1.5, $secondary-color);
+        }
+
+        &__title {
+            @include font(3rem, 700, 1, $secondary-color);
+            margin-bottom: 10px;
+        }
+
+        &__buttons {
+            @include flex(center, flex-start, row, 10px);
+            margin-top: 25px;
+        }
+    }
+}
+
+
+
+.popular {
+    &__title {
+        @include font(2rem, 700, 1.5, $secondary-color);
+        margin-bottom: 20px;
+        margin-top: 40px;
+    }
+
+    &__item {
+        width: 100%;
+        height: 350px;
+        cursor: pointer;
+        &__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &__title {
+            @include font(1.5rem, 700, 1.2, $secondary-color);
+            margin-top: 10px;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        &__info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            @include flex(center, center, column, 10px);
+            opacity: 0;
+            transition: opacity 0.1s linear;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &__details {
+            @include flex(center, center, row, 10px);
+            width: 100%;
+            color: $secondary-color;
+            font-size: 1.2rem;
+        }
+
+        &__rating {
+            color: $main-color;
+        }
+
+        &__age {
+            display: inline-block;
+            padding: 0 6px;
+            border: 1px solid $secondary-color;
+        }
+
+    }
+
+    // .swiper{
+    //     padding: 10px;
+    // }
+
+    // .swiper-slide {
+    //     transition: transform 0.1s linear;
+    //     &:hover {
+    //         transform: scale(1.03);
+    //     }
+    // }
+}
+
+.genres {
+    padding: 60px 0;
+    &__title {
+        @include font(2rem, 700, 1.5, $secondary-color);
+        margin-bottom: 20px;
+    }
+    &__items {
+        @include flex(center, center, row, 10px, wrap);
+
+    }
+
+    &__item {
+        width: calc((100% - 50px) / 6);
+    }
+
+    &__link {
+        
+        cursor: pointer;
+        @include flex(center, center, column, 10px);
+        background-color: $gray-color;
+        padding: 30px 10px;
+        border-radius: 20px;
+        
+        span {
+            @include font(1rem, 600, 1.5, $secondary-color);
+        }
+
+        svg {
+            fill: $main-color;
+            height: 35px;
+        }
+
+        &__title {
+            @include font(1.5rem, 700, 1.2, $secondary-color);
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: $secondary-color;
+        }
+    }
+    
+}
