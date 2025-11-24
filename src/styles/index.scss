@@ -26,11 +26,114 @@ body {
 }
 
 .fill-button {
-    @include button($main-color, $secondary-color, none);
+    @include button();
+    background-color: $main-color;
 }
-.fill-button_gray {
-    background-color: rgb(34 31 31);
+
+.border-button {
+    @include button();
+    color: $main-color;
 }
-.transp-button {
-    @include button(none, rgb(75, 85, 99), 1px solid rgb(75, 85, 99));
+
+
+
+
+.header {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    padding: 13px 0;
+    z-index: 100;
+    background-color: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    color: $secondary-color;
+    
+    &__blur {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 50;
+    }
+    &__content  {
+        @include flex(center, space-between, row, 15px);
+        position: relative;
+        z-index: 100;
+    }
+
+    &__logo {
+        @include font(40px, 600, 1, rgb(229, 9, 20));
+    }
+
+    &__nav {
+        @include font(16px, 600);
+        ul {
+            @include flex(center, center, row, 15px)
+        }
+    }
+}
+
+
+
+
+.film {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 14;
+    cursor: pointer;
+    max-width: 400px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__title {
+        @include font(1.5rem, 700, 1.2, $secondary-color);
+        margin-top: 10px;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    &__info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        @include flex(center, center, column, 10px);
+        opacity: 0;
+        transition: opacity 0.1s linear;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &__details {
+        @include flex(center, center, row, 10px);
+        width: 100%;
+        color: $secondary-color;
+        font-size: 1.2rem;
+    }
+
+    &__rating {
+        color: $main-color;
+    }
+
+    &__age {
+        display: inline-block;
+        padding: 0 6px;
+        border: 1px solid $secondary-color;
+    }
+
+}
+
+.loader {
+    background-color: gray;
 }

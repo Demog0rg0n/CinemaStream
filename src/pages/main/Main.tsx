@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-
 import 'swiper/css';
 
 import "./main.scss";
@@ -19,9 +18,9 @@ const Main: FC = () => {
             <section className="popular">
                 <div className="container">
                     <h2 className='popular__title'>Популярные фильмы</h2>
-                    <PopularSwiper typeNumber={1}/>
+                    <PopularSwiper type={"movie"}/>
                     <h2 className='popular__title'>Популярные сериалы</h2>
-                    <PopularSwiper typeNumber={2}/>
+                    <PopularSwiper type={"tv-series"}/>
                 </div> 
             </section>
             <section className="genres">

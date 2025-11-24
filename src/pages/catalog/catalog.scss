@@ -1,0 +1,14 @@
+@use '../../styles/mixins.scss' as *;
+
+.catalog {
+    padding: 60px 0;
+    &__items {
+        @include flex(flex-start, flex-start, row, 10px, wrap);
+
+        .film {
+            width: calc((100% - 30px) / 4);
+            
+        }
+    }
+
+}

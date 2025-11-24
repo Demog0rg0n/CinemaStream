@@ -11,7 +11,7 @@ export default {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
+    publicPath: '/',
   },
   mode: 'development',
   module: {
@@ -19,11 +19,8 @@ export default {
       {
         test: /\.(css|scss)$/,
         use: [
-          // Creates `style` nodes from JS strings
           "style-loader",
-          // Translates CSS into CommonJS
           "css-loader",
-          // Compiles Sass to CSS
           "sass-loader",
         ],
       },
@@ -62,6 +59,12 @@ export default {
     historyApiFallback: true,
     port: 3001,
     hot: true,
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    devMiddleware: {
+      publicPath: '/',
+    },
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"], // Поддержка расширений
@@ -69,6 +72,7 @@ export default {
       "@": path.resolve(__dirname, 'src/'),
       "@components": path.resolve(__dirname, 'src/components/'),
       "@api": path.resolve(__dirname, 'src/api/'),
+      "@styles": path.resolve(__dirname, 'src/styles/'),
     },
   },
 };

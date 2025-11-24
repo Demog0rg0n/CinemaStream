@@ -1,17 +1,20 @@
-import { MovieType } from '@/types';
+import { ExtendetMovieType, MovieType, Type } from '@/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const API_BASE_URL = 'https://api.kinopoisk.dev/v1.4'; 
+const API_BASE_URL = 'https://api.poiskkino.dev/v1.4'; 
 
 interface MoviesParams {
-    typeNumber: number;
     genre?: string;
     year?: number;
     rating?: number;
     sortField?: string;
     sortType: number;
+    type: Type;
     notNullFields?: string[];
+    limit?: number;
+
 }
+
 interface MoviesResponse {
     docs: MovieType[];
 }
@@ -31,25 +34,20 @@ const moviesApi = createApi({
                 rating: params.rating,
                 sortField: params.sortField,
                 sortType: params.sortType || -1,
-                typeNumber: params.typeNumber,
+                type: params.type,
                 notNullFields: params.notNullFields,
+                limit: params.limit || 10,
             },
         }),
         }),
 
-        // getPopularMovies: build.query<PopularMoviesResponse, PopularMoviesParams>({
-        // query: (params) => ({
-        //     url: '/movie',
-        //     params: {
-        //     token: 'X2QN6H3-HE04T8F-MHEB1P5-ZDA1BNB',
-        //     sortField: "votes.imdb",
-        //     sortType: -1,
-        //     typeNumber: params.typeNumber
-        //     },
-        // }),
-        // }),
-        getMovieDetails: build.query({
-        query: (id) => `/movie/${id}`,
+        getMovieDetails: build.query<ExtendetMovieType, string | undefined>({
+            query: (id) => ({
+                url: `/movie/${id}`,
+                params: {
+                token: 'X2QN6H3-HE04T8F-MHEB1P5-ZDA1BNB',
+            },
+        }),
         }),
     }),
 });
